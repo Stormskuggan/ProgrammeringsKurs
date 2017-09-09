@@ -10,33 +10,24 @@ namespace Task7
     {
         static void Main(string[] args)
         {
-            int lowestNumber;
-            int inputNumber;
-            bool keepIterating = true;
-
-            Console.Write("This app calculates the smallest number input. To stop number collecting enter the number 0.\ninput number: ");
+            int lowestNumber = 0;
+            int inputNumber = 0;
+            Console.Write("This app calculates the smallest number input. To stop number collecting enter the number 0.\nInput number: ");
             lowestNumber = int.Parse(Console.ReadLine());
-            if (lowestNumber == 0)
+            if (lowestNumber != 0)
             {
-                keepIterating = false;
-            }
-               
-
-            while (keepIterating)
-            {
-                Console.Write("input number: ");
-                inputNumber = int.Parse(Console.ReadLine());
-                if (inputNumber < lowestNumber && inputNumber > 0)
+                do
                 {
-                    lowestNumber = inputNumber;
-                }
-                if (inputNumber == 0)
-                {
-                    keepIterating = false;
-                }
+                    Console.Write("input number: ");
+                    inputNumber = int.Parse(Console.ReadLine());
 
+                    if (inputNumber < lowestNumber && inputNumber != 0)
+                    {
+                        lowestNumber = inputNumber;
+                    }
+
+                } while (inputNumber != 0);
             }
-
             Console.WriteLine("The lowest number was {0}",lowestNumber);
 
         }
