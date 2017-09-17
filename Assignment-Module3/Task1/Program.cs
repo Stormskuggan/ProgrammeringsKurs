@@ -11,22 +11,26 @@ namespace Task1
         static void Main(string[] args)
         {
 
+            Sphere mySphere = new Sphere(9);
+
+            Console.WriteLine("Radius is currently: " + mySphere.SphereRadius);
+            Console.Write("Input a new radius for this sphere: ");
+            try
+            {
+                mySphere.SphereRadius = int.Parse(Console.ReadLine());
+            }
+
+            catch (FormatException)
+            {
+                Console.WriteLine("input must be numeric. Program will continue");
+            }
+            Console.WriteLine("Volume of sphere is: " + mySphere.CalculateSphereVolume());
+          
         }
+            
+        
     }
-    class Sphere
-    {
-        private int radius;
+    
 
-
-        public Sphere()
-        {
-
-        }
-
-        public Sphere (int radius)
-        {
-
-        }
-
-    }
+    
 }
