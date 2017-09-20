@@ -22,7 +22,7 @@ namespace Task3
             Account myAccount = new Account(2200, newName);
 
 
-            Console.WriteLine("Welcome,{0}. This is your account book!", myAccount.Name);
+            Console.WriteLine("Welcome, {0}. This is your account book!", myAccount.Name);
             myAccount.ShowMessage("Your balance is " + myAccount.Balance);
             
 
