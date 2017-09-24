@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Work2.Vehicle">
+    <Position X="6.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAQAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work2.FourWheelVehicle" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>FourWheelVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work2.TwoWheelVehicle" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>TwoWheelVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work2.SportCar" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SportCar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work2.Rally" Collapsed="true">
+    <Position X="8.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAQAAAAEAAIQAAAAAAAAAAAA=</HashCode>
+      <FileName>Rally.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work2.FamilyCar" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>FamilyCar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

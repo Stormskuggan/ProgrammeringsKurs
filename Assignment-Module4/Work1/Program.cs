@@ -12,8 +12,8 @@ namespace Work1
         {
             Shape s = new Shape();
             Console.WriteLine("Shape: " + s.Display());
-            Circle c = new Circle();
-            Console.WriteLine("Circle: " + c.Display());
+            Circle circle = new Circle();
+            Console.WriteLine("Circle: " + circle.Display());
             Cylinder cylinder = new Cylinder();
             Console.WriteLine("Cylinder: " + cylinder.Display());
 
