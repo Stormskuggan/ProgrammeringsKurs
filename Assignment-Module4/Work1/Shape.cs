@@ -18,11 +18,11 @@ namespace Work1
             y = 1;
         }
 
-        //public Shape(int X, int Y)
-        //{
-        //    x = X;
-        //    y = Y;
-        //}
+        public Shape(int X, int Y)
+        {
+            x = X;
+            y = Y;
+        }
 
 
         public virtual string Display()

@@ -13,9 +13,9 @@ namespace Work1
         private double area;
 
 
-        public Circle() : base()
+        public Circle(int X, int Y, double Radius) : base(X,Y)
         {
-            radius = 5;
+            radius = Radius;
             area = calculateArea(radius);
 
         }
