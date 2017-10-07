@@ -75,7 +75,7 @@ namespace Task2
 
                 myName = InputNameBox.Text;
 
-                //StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\Names.txt");
+               
                 StreamWriter sw = File.AppendText(Directory.GetCurrentDirectory() + @"\Names.txt");
                 sw.WriteLine(myName);
                 
