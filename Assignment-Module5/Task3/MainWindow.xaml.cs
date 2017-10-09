@@ -31,7 +31,10 @@ namespace Task3
 
 
             if (File.Exists("LineNumbers.txt"))
+            {
                 File.Delete("LineNumbers.txt");
+            }
+                
 
             StreamWriter FileCreator = File.AppendText("LineNumbers.txt");
             FileCreator.WriteLine("This is line one");
@@ -83,6 +86,11 @@ namespace Task3
             catch (FileNotFoundException)
             {
                 label.Content = "Can't find an acceptable file";
+            }
+            catch (Exception)
+            {
+
+                label.Content = "Unknown Error";
             }
             
         }
