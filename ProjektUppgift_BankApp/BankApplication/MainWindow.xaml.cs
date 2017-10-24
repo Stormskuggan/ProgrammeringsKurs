@@ -20,10 +20,39 @@ namespace BankApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
+
         public MainWindow()
         {
             InitializeComponent();
-            BankLogic bank = new BankLogic();
+            
+            MakeAccount.Click += MakeAccount_Click;
+            
+            WithdrawButton.Click += WithdrawButton_Click;
+            DisplayButton.Click += DisplayButton_Click;
+
+        }
+
+
+        private void DisplayButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            label.Content = BankLogic.GetAccount(Convert.ToInt32(AccountIdBox.Text));
+        }
+
+        private void WithdrawButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            BankLogic.Withdraw(Convert.ToDecimal(WithdrawBox.Text), 1001);
+
+        }
+
+        private void MakeAccount_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            
+                label.Content = "Account with Id: " + BankLogic.addSavingsAccount() + " created!";
 
         }
     }

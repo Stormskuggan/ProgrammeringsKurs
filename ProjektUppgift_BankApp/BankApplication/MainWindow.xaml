@@ -5,13 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="MakeAccount" Content="MakeAccount" HorizontalAlignment="Left" Margin="85,35,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="85,75,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="85,115,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="WithdrawBox" HorizontalAlignment="Left" Height="23" Margin="255,72,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Cursor="IBeam"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="210,149,0,0" VerticalAlignment="Top"/>
+        Title="Bank Application" Height="600" Width="800">
+    <Border Padding="10">
+        <StackPanel >
+            <Grid VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                
+            </Grid>
+            <Grid VerticalAlignment="Top">
 
-    </Grid>
+                    <Button x:Name="MakeAccount" Content="MakeAccount" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,57,0,0"/>
+                    <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Account Creation" VerticalAlignment="Top"/>
+                    <Grid VerticalAlignment="Top">
+
+                    </Grid>
+                </Grid>
+                <Grid Height="93" VerticalAlignment="Top">
+
+
+                    <Label x:Name="label" Content="Data Display" HorizontalAlignment="Right" Margin="0,34,0,33" Width="462" VerticalAlignment="Center"/>
+                    <TextBox x:Name="AccountIdBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,0" TextWrapping="Wrap" Text="Insert AccountID" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Account information " VerticalAlignment="Top" Margin="0,10,0,0"/>
+                    <TextBox x:Name="PersonNumberInput" HorizontalAlignment="Left" Height="23" Margin="0,-52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Personnummer" Cursor="IBeam"/>
+                    <Button x:Name="DisplayButton" Content="Display" HorizontalAlignment="Left" Margin="0,59,0,-25" VerticalAlignment="Top" Width="75"/>
+
+
+                </Grid>
+                <Grid>
+                    <Button x:Name="WithdrawButton" Content="Withdraw" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="WithdrawBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Cursor="IBeam"/>
+                    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="Transactions" VerticalAlignment="Top" RenderTransformOrigin="0.385,-1.5"/>
+
+
+
+                </Grid>
+
+
+            
+
+
+        </StackPanel>
+
+
+
+
+    </Border>
+
 </Window>

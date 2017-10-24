@@ -41,7 +41,7 @@ namespace BankApplication
         public SavingsAccount(int NewID)
         {
             balance = 1000;
-            InterestRate = 0.10;
+            InterestRate = 0.01;
             accountID = NewID;
         }
 

@@ -6,34 +6,46 @@ using System.Threading.Tasks;
 
 namespace BankApplication
 {
-    class BankLogic
+    static class BankLogic
     {
 
         //private List<Costumer> allcostumers;
-        private List<SavingsAccount> allSavingsAccounts;
-        private int countOfAccounts;
+        private static List<SavingsAccount> allSavingsAccounts = new List<SavingsAccount>();
+        private static int countOfAccounts;
 
 
-        public BankLogic()
+        //public BankLogic()
+        //{
+
+
+
+        //}
+
+        static public int addSavingsAccount()
         {
-
-
-
-        }
-
-        public int addSavingsAccount()
-        {
-            countOfAccounts++;
-            SavingsAccount s = new SavingsAccount(countOfAccounts+1000);
-            allSavingsAccounts.Add(s);
-            //if successful
-            return s.AccountID;
-            //else 
+            try
+            {
+                countOfAccounts++;
+                SavingsAccount sA = new SavingsAccount(countOfAccounts + 1000);
+                allSavingsAccounts.Add(sA);
+                //if successful
+                return sA.AccountID;
+                //else 
                 //return -1;
+            }
+            catch (NullReferenceException)
+            {
+                return 404;
+            }
+            catch (Exception)
+            {
+                return 000;
+            }
+
         }
 
 
-        public bool Withdraw (decimal amount, int AccountId)
+        static public bool Withdraw (decimal amount, int AccountId)
         {
             bool state = true;
             SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) =>  a.AccountID == AccountId);
@@ -48,9 +60,13 @@ namespace BankApplication
                 state = false;
             //if fail
             return state;
-     
-
-            
+         
         }
+        static public string GetAccount(int AccountId)
+        {
+            SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) => a.AccountID == AccountId);
+            return "Account ID:" + Convert.ToString(account.AccountID) + "\nBalance: " + Convert.ToString(account.Balance) + "\nInterest rate:" + Convert.ToString(account.InterestRate * 100) + "%";
+        }
+
     }
 }
