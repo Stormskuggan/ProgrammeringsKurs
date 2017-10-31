@@ -56,8 +56,26 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BankLogic.cs" />
-    <Compile Include="Costumer.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="SavingsAccount.cs" />
+    <Compile Include="W_AddCustomer.xaml.cs">
+      <DependentUpon>W_AddCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="W_CloseAccount.xaml.cs">
+      <DependentUpon>W_CloseAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="W_CreateAccount.xaml.cs">
+      <DependentUpon>W_CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="W_NameChange.xaml.cs">
+      <DependentUpon>W_NameChange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="W_RemoveCustomer.xaml.cs">
+      <DependentUpon>W_RemoveCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="W_WithdrawDeposit.xaml.cs">
+      <DependentUpon>W_WithdrawDeposit.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +88,30 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="W_AddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="W_CloseAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="W_CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="W_NameChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="W_RemoveCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="W_WithdrawDeposit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -1,0 +1,22 @@
+﻿<Window x:Class="BankApplication.W_NameChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankApplication"
+        mc:Ignorable="d"
+        Title="W_NameChange" Height="332" Width="300">
+    <Border Padding ="10">
+        <StackPanel>
+
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name Change" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBox x:Name="PersonNumberInput" HorizontalAlignment="Left" Height="24" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Personnummer" Cursor="IBeam"/>
+            <TextBlock x:Name="textBlock3" Text="Enter new names" Margin="0,10,0,0" />
+            <TextBox x:Name="FirstNameInput" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Text="First Name" Cursor="IBeam" Margin="0,10,0,0"/>
+            <TextBox x:Name="LastNameInput" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Text="Last Name" Cursor="IBeam" Margin="0,10,0,0"/>
+            <Button x:Name="ChangeButton" Content="Change Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock" Margin="0,10,0,0" Height="42"/>
+            <Button x:Name="button" Content="Cancel" Margin="0,10,0,0" IsCancel="True" VerticalAlignment="Bottom" Height="19"/>
+        </StackPanel>
+    </Border>
+</Window>

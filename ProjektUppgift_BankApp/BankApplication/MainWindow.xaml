@@ -7,50 +7,47 @@
         mc:Ignorable="d"
         Title="Bank Application" Height="600" Width="800">
     <Border Padding="10">
-        <StackPanel >
-            <Grid VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock x:Name="label" Text="Data Display" Height="225"/>
+            </StackPanel>
+
+            <StackPanel Grid.ColumnSpan="1" HorizontalAlignment="Left">
                 
+                <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Account information " VerticalAlignment="Top" Margin="0,10,0,0"/>
+                <TextBox x:Name="AccountIdBox" HorizontalAlignment="Left" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="Insert AccountID" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="DisplayAccountButton" Content="Display" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="75"/>
                 
-            </Grid>
-            <Grid VerticalAlignment="Top">
-
-                    <Button x:Name="MakeAccount" Content="MakeAccount" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="0,57,0,0"/>
-                    <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Account Creation" VerticalAlignment="Top"/>
-                    <Grid VerticalAlignment="Top">
-
-                    </Grid>
-                </Grid>
-                <Grid Height="93" VerticalAlignment="Top">
-
-
-                    <Label x:Name="label" Content="Data Display" HorizontalAlignment="Right" Margin="0,34,0,33" Width="462" VerticalAlignment="Center"/>
-                    <TextBox x:Name="AccountIdBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,0" TextWrapping="Wrap" Text="Insert AccountID" VerticalAlignment="Top" Width="120"/>
-                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Account information " VerticalAlignment="Top" Margin="0,10,0,0"/>
-                    <TextBox x:Name="PersonNumberInput" HorizontalAlignment="Left" Height="23" Margin="0,-52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Personnummer" Cursor="IBeam"/>
-                    <Button x:Name="DisplayButton" Content="Display" HorizontalAlignment="Left" Margin="0,59,0,-25" VerticalAlignment="Top" Width="75"/>
-
-
-                </Grid>
-                <Grid>
-                    <Button x:Name="WithdrawButton" Content="Withdraw" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="75"/>
-                    <TextBox x:Name="WithdrawBox" HorizontalAlignment="Left" Height="23" Margin="0,31,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Cursor="IBeam"/>
-                    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="Transactions" VerticalAlignment="Top" RenderTransformOrigin="0.385,-1.5"/>
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Customer Information" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                <TextBox x:Name="PersonIdBox" HorizontalAlignment="Left" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="Insert PersonID" VerticalAlignment="Top" Width="120"/>
+                
+                <Button x:Name="DisplayCustomerButton" Content="Display" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="AddCustomerButton" Content="Add New Customer" Margin="0,10,0,0"/>
+                <Button x:Name="ChangeCustomerName" Content="Change Customers Name" Margin="0,10,0,0"/>
+                <Button x:Name="CreateAccountButton" Content="Create account" Margin="0,10,0,0"/>
+                <Button x:Name="MoneyTransactionButton" Content="Transact Money" Margin="0,10,0,0"/>
+                <Button x:Name="CloseAccountButton" Content="Close Account" Margin="0,10,0,0"/>
+                <Button x:Name="RemoveCustomerButton" Content="Remove Customer" Margin="0,10,0,0"/>
+                <Button x:Name="DisplayAllCustomers" Content="Display All Customers" Margin="0,10,0,0"/>
 
 
 
-                </Grid>
 
 
-            
 
 
-        </StackPanel>
 
+
+
+
+
+            </StackPanel>
+        </Grid>
 
 
 
