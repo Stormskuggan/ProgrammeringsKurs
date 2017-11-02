@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankApplication"
         mc:Ignorable="d"
-        Title="W_RemoveCustomer" Height="300" Width="300">
+        Title="W_RemoveCustomer" Height="500" Width="300">
     <Border Padding ="10">
         <StackPanel>
 
             <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Customer Removal" VerticalAlignment="Top" Margin="0,10,0,0"/>
             <TextBox x:Name="PersonNumberInput" HorizontalAlignment="Left" Height="24" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Personnummer" Cursor="IBeam"/>
             <Button x:Name="RemoveButton" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock" Margin="0,10,0,0" Height="110"/>
+            <TextBlock x:Name="InfoBlock" TextWrapping="Wrap" Text="TextBlock" Margin="0,10,0,0" Height="315"/>
             <Button x:Name="button" Content="Cancel" Margin="0,10,0,0" IsCancel="True" VerticalAlignment="Bottom"/>
         </StackPanel>
     </Border>

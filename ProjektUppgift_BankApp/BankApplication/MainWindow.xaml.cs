@@ -98,6 +98,8 @@ namespace BankApplication
         private void MoneyTransactionButton_Click(object sender, RoutedEventArgs e)
         {
             //throw new NotImplementedException();
+            BankLogic.AddCustomer(9876543219, "test", "placeholder");
+            BankLogic.AddSavingsAccount(9876543219);
             W_WithdrawDeposit window = new W_WithdrawDeposit();
             window.ShowDialog();
         }
@@ -119,7 +121,29 @@ namespace BankApplication
         private void DisplayButton_Click(object sender, RoutedEventArgs e)
         {
             //throw new NotImplementedException();
-            label.Text = BankLogic.GetAccount(Convert.ToInt32(AccountIdBox.Text));
+            label.Text = "";
+            try
+            {
+                long Pnr = Convert.ToInt64(PersonIdBox.Text);
+                int AccountId = Convert.ToInt32(AccountIdBox.Text);
+                if (Pnr.ToString().Length == 10)
+                {
+                    
+                    
+                    label.Text += BankLogic.GetAccount(AccountId, Pnr);
+
+                }
+                else
+                    label.Text = "Invalid PersonID. Try this format YYMMDDXXXX";
+
+            }
+            catch (FormatException)
+            {
+                label.Text = "Invalid PersonID. Try this format YYMMDDXXXX, ";
+            }
+
+
+
         }
 
         //private void WithdrawButton_Click(object sender, RoutedEventArgs e)
@@ -132,7 +156,7 @@ namespace BankApplication
         //private void MakeAccount_Click(object sender, RoutedEventArgs e)
         //{
         //    //throw new NotImplementedException();
-            
+
         //        label.Text = "Account with Id: " + BankLogic.addSavingsAccount() + " created!";
 
         //}

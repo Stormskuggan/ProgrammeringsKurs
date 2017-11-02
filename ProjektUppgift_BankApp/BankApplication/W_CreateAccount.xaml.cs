@@ -36,9 +36,11 @@ namespace BankApplication
         {
             //throw new NotImplementedException();
             decimal inputAmount = Convert.ToDecimal(DepositInput.Text);
+
             if (BankLogic.Deposit(inputAmount, tempAccountID, tempPnr))
             {
-                InfoBlock.Text = "Deposit successful!";
+                InfoBlock.Text = "Deposit successful!\n" + BankLogic.GetAccount(tempAccountID,tempPnr);
+
             }
             else
             {
@@ -54,8 +56,6 @@ namespace BankApplication
             {
 
                 tempPnr = Convert.ToInt64(PersonNumberInput.Text);
-
-                
 
                 if (tempPnr.ToString().Length == 10)
                 {
@@ -74,15 +74,14 @@ namespace BankApplication
                         InfoBlock.Text = "AccountID: " + result + " created!";
                         tempAccountID = result;
                     }
-                    
 
                 }
                 else
                     InfoBlock.Text = "Invalid PersonID. Try this format YYMMDDXXXX";
             }
-            catch
+            catch (FormatException)
             {
-
+                InfoBlock.Text = "Invalid PersonID. Try this format YYMMDDXXXX";
             }
 
         }

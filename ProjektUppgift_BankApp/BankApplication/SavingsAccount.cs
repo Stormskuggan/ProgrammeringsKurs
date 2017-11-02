@@ -19,14 +19,13 @@ namespace BankApplication
             }
             set
             {
-                if (value <= balance)
-                {
-                    balance = value;
-                }
+
+                balance = value;
+
                 
             }
         }
-        public double InterestRate { get; set; }
+        public decimal InterestRate { get; set; }
 
         private int accountID;
         public int AccountID
@@ -41,7 +40,7 @@ namespace BankApplication
         public SavingsAccount(int NewID)
         {
             balance = 0;
-            InterestRate = 0.01;
+            InterestRate = 0.01m;
             accountID = NewID;
         }
 

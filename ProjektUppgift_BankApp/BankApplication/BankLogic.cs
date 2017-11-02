@@ -35,9 +35,10 @@ namespace BankApplication
             {
                 countOfAccounts++;
                 SavingsAccount sA = new SavingsAccount(countOfAccounts + 1000);
-                //allSavingsAccounts.Add(sA);
-                Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
-                AccountOwner.OwnedAccounts.Add(sA);
+                allSavingsAccounts.Add(sA);
+
+                int ownernumber = allCustomers.FindIndex((Customer c) => { return c.PersonID == Pnr; });
+                allCustomers[ownernumber].OwnedAccounts.Add(sA);
 
                 //if successful
                 return sA.AccountID;
@@ -60,19 +61,16 @@ namespace BankApplication
             //SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) => a.AccountID == AccountId);
             try
             {
-                
-                Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
 
-                //SavingsAccount account = AccountOwner.OwnedAccounts.Find((SavingsAccount a) => { return a.AccountID == AccountId; });
-                foreach (SavingsAccount sA in AccountOwner.OwnedAccounts)
-                {
-                    if (sA.AccountID == AccountId)
-                    {
-                        sA.Balance += amount;
-                        return true;
-                    }
-                        
-                }
+                Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
+                SavingsAccount sA = AccountOwner.OwnedAccounts.Find((SavingsAccount a) => { return a.AccountID == AccountId; });
+                sA.Balance += amount;
+                return true;
+
+                //använd for loop. foreach kan int ändra något i listan som den itererar på!!!!!
+                // DET FUNKAR FORTFARANDE INTE!!!!1!!!!11!!
+                // i hate coding. properyn Balance hade en if-sats i sig som hindrade värdet fårn att uppdateras
+
                 throw new Exception();
 
             }
@@ -88,35 +86,79 @@ namespace BankApplication
             
             
         }
-        static public bool Withdraw(decimal amount, int AccountId, long Pnr)
+        static public int Withdraw(decimal amount, int AccountId, long Pnr)
         {
-           
-            //SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) =>  a.AccountID == AccountId);
-            Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
-            foreach (SavingsAccount sA in AccountOwner.OwnedAccounts)
+            try
             {
-                if (sA.AccountID == AccountId)
+                Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
+                foreach (SavingsAccount sA in AccountOwner.OwnedAccounts)
                 {
-                    if (sA.Balance >= amount)
+                    if (sA.AccountID == AccountId)
                     {
-                        //if successful
-                        sA.Balance -= amount;
-                        return true;
+                        if (sA.Balance >= amount)
+                        {
+                            //if successful
+                            sA.Balance -= amount;
+                            return 1;
+                        }
+                        else
+                            return -1;
                     }
-                    else
-                        return false;
+
                 }
-                else
-                    return false;
+                //if fail
+                return 4042;
+            }   
+            catch (NullReferenceException)
+            {
+                return 404;
             }
-            //if fail
-            return false;
+            //catch (Exception)
+            //SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) =>  a.AccountID == AccountId);
+
          
         }
-        static public string GetAccount(int AccountId)
+
+        static public bool ChangeCustomerName(long Pnr, string firstname, string lastname)
         {
-            SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) => { return a.AccountID == AccountId; });
-            return "Account ID:" + Convert.ToString(account.AccountID) + "\nBalance: " + Convert.ToString(account.Balance) + "\nInterest rate:" + Convert.ToString(account.InterestRate * 100) + "%";
+            try
+            {
+                //int CustomerIndex = allCustomers.FindIndex((Customer c) => { return c.PersonID == Pnr; });
+                //allCustomers[CustomerIndex].FirstName = firstname;
+                //allCustomers[CustomerIndex].LastName = lastname;
+                Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
+                AccountOwner.FirstName = firstname;
+                AccountOwner.LastName = lastname;
+                return true;
+            }
+            catch (NullReferenceException)
+            {
+                return false;
+            }
+        }
+
+        static public string GetAccount(int AccountId, long Pnr)
+        {
+            //SavingsAccount account = allSavingsAccounts.Find((SavingsAccount a) => { return a.AccountID == AccountId; });
+            try
+            {
+                Customer AccountOwner = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
+                foreach (SavingsAccount sA in AccountOwner.OwnedAccounts)
+                {
+                    if (sA.AccountID == AccountId)
+                    {
+                        return "Account ID:" + Convert.ToString(sA.AccountID) + "\nBalance: " + Convert.ToString(sA.Balance) + "\nInterest rate: " + Convert.ToString(sA.InterestRate * 100) + " %\n";
+                    }
+                    
+                        
+                }
+                return "Account not Found";
+            }
+            catch (NullReferenceException)
+            {
+                return "Customer or Account not found";
+            }
+
         }
 
         static public List<string> GetCustomer(long Pnr)
@@ -163,16 +205,72 @@ namespace BankApplication
             return myList;
         }
 
+        static public string CloseAccount(int AccountId, long Pnr)
+        {
 
-        //static public bool ValidatePersonalNumber(int Pnr)
-        //{
-        //    if (Pnr.ToString().Length == 10)
-        //    {
+            try
+            {
+                Customer myCustomer = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
+                int i = myCustomer.OwnedAccounts.FindIndex((SavingsAccount sA) => { return sA.AccountID == AccountId; });
+                decimal earnedMoney = CalculateInterestReturn(myCustomer.OwnedAccounts[i]);
+                string AccountInfo = GetAccount(AccountId, Pnr);
+                myCustomer.OwnedAccounts.RemoveAt(i);
 
-        //    }
+                return AccountInfo + "Account now closed, Earning " + earnedMoney.ToString() + " through interest.\n";
+            }
+            catch(Exception x)
+            {
+                return x.ToString();
+
+            }
+           
+        }
+        static public decimal CalculateInterestReturn(SavingsAccount sA)
+        {
+            decimal earnedMoney = sA.Balance * sA.InterestRate;
+
+            return earnedMoney;
+
+        }
+        static public List<string> RemoveCustomer(long Pnr)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                Customer myCustomer = allCustomers.Find((Customer c) => { return c.PersonID == Pnr; });
+                //WHat im doing next! find a way to close all accounts of a customer.
+                decimal earnedMoney = 0m;
+                List<int> accIdCollection = new List<int>();
+                for (int i = 0; i < myCustomer.OwnedAccounts.Count; i++)
+                {
+                    earnedMoney += CalculateInterestReturn(myCustomer.OwnedAccounts[i]);
+                    accIdCollection.Add(myCustomer.OwnedAccounts[i].AccountID);
+                }
+                for (int i = 0; i < accIdCollection.Count; i++)
+                {
+                    result.Add(CloseAccount(accIdCollection[i], Pnr));
+                }
+                allCustomers.Remove(myCustomer);
+                result.Add("In total the customer earned" + earnedMoney.ToString() + "through interest\n");
+                return result;
+
+            }
+            catch (NullReferenceException)
+
+            {
+                result.Add("Customer not found in database");
+                return result;
+            }
+            catch (Exception x)
+            {
+                result.Add(x.ToString());
+                return result;
+            }
+            
+          
+
+        }
 
 
-        //    return false;
-        //}
     }
 }

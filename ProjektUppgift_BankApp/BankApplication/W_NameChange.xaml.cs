@@ -22,6 +22,20 @@ namespace BankApplication
         public W_NameChange()
         {
             InitializeComponent();
+            ChangeButton.Click += ChangeButton_Click;
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (BankLogic.ChangeCustomerName(Convert.ToInt64(PersonNumberInput.Text), FirstNameInput.Text, LastNameInput.Text))
+            {
+                textBlock.Text = "Name changed";
+            }
+            else
+                textBlock.Text = "Unsuccessful Namechange";
+
+
         }
     }
 }

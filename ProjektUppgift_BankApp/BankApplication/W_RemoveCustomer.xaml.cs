@@ -22,6 +22,20 @@ namespace BankApplication
         public W_RemoveCustomer()
         {
             InitializeComponent();
+            RemoveButton.Click += RemoveButton_Click;
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            InfoBlock.Text = "Removing Customer and closing associated accounts...\n";
+            long Pnr = Convert.ToInt64(PersonNumberInput.Text);
+            List<string> result = BankLogic.RemoveCustomer(Pnr);
+            foreach (string s in result)
+            {
+                InfoBlock.Text += s;
+            }
+
         }
     }
 }

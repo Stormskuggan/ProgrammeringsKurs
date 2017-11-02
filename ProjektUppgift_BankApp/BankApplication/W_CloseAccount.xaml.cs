@@ -22,6 +22,28 @@ namespace BankApplication
         public W_CloseAccount()
         {
             InitializeComponent();
+            CloseAccountButton.Click += CloseAccountButton_Click;
+        }
+
+        private void CloseAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            try
+            {
+                int id = Convert.ToInt32(AccountIdInput.Text);
+                long Pnr = Convert.ToInt64(PersonNumberInput.Text);
+                InfoBlock.Text = BankLogic.CloseAccount(id, Pnr);
+            }
+            catch (FormatException) 
+            {
+                InfoBlock.Text = "Wrong Input credentials!";
+            }
+            catch (Exception x)
+            {
+                InfoBlock.Text = x.ToString();
+            }
+            
+            
         }
     }
 }

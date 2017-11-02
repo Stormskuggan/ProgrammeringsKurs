@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankApplication"
         mc:Ignorable="d"
-        Title="W_WithdrawDeposit" Height="300" Width="300">
+        Title="W_WithdrawDeposit" Height="350" Width="300">
     <Border Padding ="10">
         <StackPanel>
 
@@ -16,8 +16,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox x:Name="PersonNumberInput_Copy" HorizontalAlignment="Left" Height="24" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="Personnummer" Cursor="IBeam"/>
-                <TextBox x:Name="textBox" Grid.Column="1" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Account ID" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126"/>
+                <TextBox x:Name="PersonNumberInput" HorizontalAlignment="Left" Height="24" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="Personnummer" Cursor="IBeam"/>
+                <TextBox x:Name="IdInput" Grid.Column="1" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Account ID" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Cursor="IBeam"/>
             </Grid>
             <TextBlock x:Name="textBlock2" Text="Amount of Money" HorizontalAlignment="Center" Margin="0,10,0,0" />
             <TextBox x:Name="AmountInput" HorizontalAlignment="Center" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Cursor="IBeam"/>
@@ -32,7 +32,7 @@
             </Grid>
             
             
-            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="TextBlock" Margin="0,10,0,0" Height="51"/>
+            <TextBlock x:Name="InfoBlock" TextWrapping="Wrap" Text="-" Margin="0,10,0,0" Height="106"/>
             <Button x:Name="CancelButton" Content="Cancel" Margin="0,10,0,0" IsCancel="True" VerticalAlignment="Bottom"/>
             
         </StackPanel>
