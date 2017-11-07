@@ -34,22 +34,30 @@ namespace BankApplication
             try
             {
                 decimal amount = Convert.ToDecimal(AmountInput.Text);
-                int id = Convert.ToInt32(IdInput.Text);
-                long Pnr = Convert.ToInt64(PersonNumberInput.Text);
-                int result = BankLogic.Withdraw(amount, id, Pnr);
-                if (result == 1)
+                if (amount >= 0m)
                 {
-                    InfoBlock.Text = "Withdraw successful!\n" + BankLogic.GetAccount(id, Pnr);
+                    int id = Convert.ToInt32(IdInput.Text);
+                    long Pnr = Convert.ToInt64(PersonNumberInput.Text);
+                    int result = BankLogic.Withdraw(amount, id, Pnr);
+                    if (result == 1)
+                    {
+                        InfoBlock.Text = "Withdraw successful!\n" + BankLogic.GetAccount(id, Pnr);
+                    }
+                    else if (result == -1)
+                    {
+                        InfoBlock.Text = "Account doesn't have enough money, sorry\n" + BankLogic.GetAccount(id, Pnr);
+                    }
+                    else if (result == 4042)
+                    {
+                        InfoBlock.Text = "Account not found in database";
+                    }
+                    else if (result == 404)
+                    {
+                        InfoBlock.Text = "Customer not found in database";
+                    }
+                
                 }
-                else if (result == -1)
-                {
-                    InfoBlock.Text = "Account doesn't have enough money, sorry\n" + BankLogic.GetAccount(id, Pnr);
-                }
-                else if (result == 4042)
-                {
-                    InfoBlock.Text = "Account not found in database";
-                }
-                else if (result == 404)
+                else
                 {
                     InfoBlock.Text = "Customer not found in database";
                 }
@@ -67,17 +75,25 @@ namespace BankApplication
             try
             {
                 decimal amount = Convert.ToDecimal(AmountInput.Text);
-                int id = Convert.ToInt32(IdInput.Text);
-                long Pnr = Convert.ToInt64(PersonNumberInput.Text);
-                if (BankLogic.Deposit(amount, id, Pnr))
+                if (amount >= 0m)
                 {
-                    InfoBlock.Text = "Deposit successful!\n" + BankLogic.GetAccount(id, Pnr);
+                    int id = Convert.ToInt32(IdInput.Text);
+                    long Pnr = Convert.ToInt64(PersonNumberInput.Text);
+                    if (BankLogic.Deposit(amount, id, Pnr))
+                    {
+                        InfoBlock.Text = "Deposit successful!\n" + BankLogic.GetAccount(id, Pnr);
 
+                    }
+                    else
+                    {
+                        InfoBlock.Text = "Customer not found in database";
+                    }
                 }
                 else
                 {
-                    InfoBlock.Text = "Customer not found in database";
+                    InfoBlock.Text = "The deposit amount cannot be a negative value";
                 }
+   
             }
             catch (FormatException)
             {

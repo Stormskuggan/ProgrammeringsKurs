@@ -200,7 +200,7 @@ namespace BankApplication
             List<string> myList = new List<string>();
             foreach (Customer c in allCustomers)
             {
-                myList.Add(c.FirstName + " " + c.LastName + " " + c.PersonID.ToString());
+                myList.Add(c.PersonID.ToString() + "\n" + c.FirstName + " " + c.LastName + "\n");
             }
             return myList;
         }
@@ -218,7 +218,16 @@ namespace BankApplication
 
                 return AccountInfo + "Account now closed, Earning " + earnedMoney.ToString() + " through interest.\n";
             }
-            catch(Exception x)
+            catch (ArgumentOutOfRangeException)
+            {
+                return "Account doesn't exist, Try a different Account ID.";
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return "Account doesn't exist, Try a different Account ID.";
+            }
+
+            catch (Exception x)
             {
                 return x.ToString();
 
@@ -251,7 +260,7 @@ namespace BankApplication
                     result.Add(CloseAccount(accIdCollection[i], Pnr));
                 }
                 allCustomers.Remove(myCustomer);
-                result.Add("In total the customer earned" + earnedMoney.ToString() + "through interest\n");
+                result.Add("In total the customer earned " + earnedMoney.ToString() + " through interest\n");
                 return result;
 
             }

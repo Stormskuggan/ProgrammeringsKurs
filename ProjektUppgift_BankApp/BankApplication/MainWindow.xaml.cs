@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace BankApplication
 {
@@ -33,6 +34,41 @@ namespace BankApplication
             CloseAccountButton.Click += CloseAccountButton_Click;
             RemoveCustomerButton.Click += RemoveCustomerButton_Click;
             DisplayAllCustomers.Click += DisplayAllCustomers_Click;
+            WriteCustomersButton.Click += WriteCustomersButton_Click;
+        }
+
+        private void WriteCustomersButton_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //if (File.Exists("Bank_Customers.txt"))
+            //{
+            //    File.Delete("Bank_Customers.txt");
+            //}
+            try
+            {
+                StreamWriter sw = new StreamWriter("Bank_Customers.txt");
+                foreach (string customer in BankLogic.GetAllCustomers())
+                {
+                    sw.WriteLine(customer);
+                }
+                label.Text = "Customers written to file!";
+                sw.Close();
+                
+            }
+            catch (UnauthorizedAccessException)
+            {
+                label.Text = "File is read-only! writing unsuccessful.";
+
+            }
+            catch (IOException)
+            {
+                label.Text = "There was a problem writing to file";
+            }
+            catch (Exception x)
+            {
+                label.Text = x.ToString();
+            }
+            
         }
 
         private void DisplayAllCustomers_Click(object sender, RoutedEventArgs e)
@@ -70,8 +106,6 @@ namespace BankApplication
                 label.Text = "Invalid PersonID. Try this format YYMMDDXXXX";
             }
 
-
-
         }
 
         private void RemoveCustomerButton_Click(object sender, RoutedEventArgs e)
@@ -98,8 +132,12 @@ namespace BankApplication
         private void MoneyTransactionButton_Click(object sender, RoutedEventArgs e)
         {
             //throw new NotImplementedException();
-            BankLogic.AddCustomer(9876543219, "test", "placeholder");
-            BankLogic.AddSavingsAccount(9876543219);
+            //debug Code
+            //BankLogic.AddCustomer(9876543219, "test", "placehoÖlder");
+            //BankLogic.AddCustomer(1234567891, "teÖshgbt", "plgiacKLÅåeholder");
+            //BankLogic.AddCustomer(9876543239, "ouyÄfo", "uckuyclu");
+            //BankLogic.AddCustomer(9876543218, "jhvlhvl", "höigliku");
+            //BankLogic.AddSavingsAccount(9876543219);
             W_WithdrawDeposit window = new W_WithdrawDeposit();
             window.ShowDialog();
         }
